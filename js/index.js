@@ -1,11 +1,10 @@
-$.get("https://www.omdbapi.com/?i=tt3896198&apikey=d4428604", function(data,status){
-    $(".carousel-item:first").css("background-image", "url(" + data.Poster + ")");
-});
 
-// $.get("https://www.omdbapi.com/?i=tt0120338&apikey=d4428604", function(data,status){
-//     console.log($(".card-img:first"));
-//     $(".card-img-top:first").attr("src", data.Poster);
-// });
+// import {getMovieById, getMovieByIdFullPlot} from "./api.js";
+
+// Carousel items 
+$(".carousel-item:first").css("background-image", "url(https://www.denofgeek.com/wp-content/uploads/2019/04/guardians_of_the_galaxy_2_large.jpg?fit=1688%2C949)").css("background-position", "center 20%");
+$(".carousel-item:eq(1)").css("background-image", "url(https://www.mkgallery.org/media/images/PayoffQuad.width-1500.jpg)").css("background-position", "center 20%");
+$(".carousel-item:eq(2)").css("background-image", "url(https://images6.alphacoders.com/336/thumb-1920-336491.jpg)").css("background-position", "center 20%");
 
 var movies = ["tt0120338", "tt1291150", "tt0172495", "tt0128853", "tt7547410", "tt3896198"];
 

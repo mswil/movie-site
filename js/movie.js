@@ -5,7 +5,7 @@ var urlParams = new URLSearchParams(window.location.search);
 getMovieById(urlParams.get("id"), function(data){
     $(".breadcrumb-item.active").text(data.Title);
     $("#title").text(data.Title);
-    $("#title-year").text(data.Year);
+    $("#title-year").text("(" + data.Year+ ")");
     $("#subtext").text(data.Rated + " | " + data.Runtime + " | " + data.Genre + " | " + data.Released + " | " + data.Country);
     $("#poster").attr("src", data.Poster);
     $("#short-plot").text(data.Plot);
