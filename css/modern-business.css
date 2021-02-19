@@ -20,3 +20,7 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+.portfolio-item .card-img-top {
+  max-height: 500px;
+}
