@@ -9,6 +9,6 @@ export function getMovieByIdFullPlot(id, callback) {
     $.get(url + "&i=" + id + "&plot=full", callback);
 }
 
-function search(query, callback) {
+export function search(query, callback) {
     $.get(url + "&s=" + query, callback);
 }

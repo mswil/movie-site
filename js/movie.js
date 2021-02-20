@@ -1,7 +1,9 @@
 import {getMovieById, getMovieByIdFullPlot} from "./api.js";
 
+//Grab whats after the ? in the url
 var urlParams = new URLSearchParams(window.location.search);
 
+//get the id from the url then search api for that movie's data and populate corresponding web fields
 getMovieById(urlParams.get("id"), function(data){
     $(".breadcrumb-item.active").text(data.Title);
     $("#title").text(data.Title);
@@ -20,6 +22,7 @@ getMovieById(urlParams.get("id"), function(data){
     $("#production").append(data.Production);
 });
 
+//get the full plot
 getMovieByIdFullPlot(urlParams.get("id"), function(data){
     $("#long-plot").text(data.Plot);
 });

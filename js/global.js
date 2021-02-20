@@ -1,5 +1,10 @@
 
 $("#search-form").on("submit", function(event){
+    
     event.preventDefault();
-    location.href="search.html";
+
+    var searchSerial = $('#search-form').serialize(); // search=dora%20the
+
+    location.href="search.html?" + searchSerial;
+
 });
