@@ -1,8 +1,14 @@
 
+const url = "https://www.omdbapi.com/?apikey=d4428604";
+
 export function getMovieById(id, callback) {
-    $.get("https://www.omdbapi.com/?i=" + id + "&apikey=d4428604", callback);
+    $.get(url + "&i=" + id, callback);
 }
 
 export function getMovieByIdFullPlot(id, callback) {
-    $.get("https://www.omdbapi.com/?i=" + id + "&apikey=d4428604&plot=full", callback);
+    $.get(url + "&i=" + id + "&plot=full", callback);
+}
+
+function search(query, callback) {
+    $.get(url + "&s=" + query, callback);
 }
