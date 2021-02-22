@@ -9,7 +9,7 @@ getMovieById(urlParams.get("id"), function(data){
     $("#title").text(data.Title);
     $("#title-year").text("(" + data.Year+ ")");
     $("#subtext").text(data.Rated + " | " + data.Runtime + " | " + data.Genre + " | " + data.Released + " | " + data.Country);
-    $("#poster").attr("src", data.Poster);
+    
     $("#short-plot").text(data.Plot);
     $("#director").find("a").text(data.Director);
     $("#writers").find("a").text(data.Writer);
@@ -20,6 +20,14 @@ getMovieById(urlParams.get("id"), function(data){
     $("#released").append(data.Released);
     $("#box-office").append(data.BoxOffice);
     $("#production").append(data.Production);
+
+    if(data.Poster == "N/A" || data.Poster == ""){
+        $("#poster").attr("src", "https://www.tu-chemnitz.de/physik/TPSM/bilder/noimageavailable.png");
+    }
+    else {
+        $("#poster").attr("src", data.Poster);
+    }
+
 });
 
 //get the full plot
