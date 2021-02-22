@@ -5,6 +5,11 @@ $("#search-form").on("submit", function(event){
 
     var searchSerial = $('#search-form').serialize(); // search=dora%20the
 
-    location.href="search.html?" + searchSerial;
+    if($("#search-form input").val() == ""){
 
+    }
+    else {
+        location.href="search.html?" + searchSerial;
+    }
+    
 });

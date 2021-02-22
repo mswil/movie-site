@@ -13,7 +13,19 @@ search(urlParams.get("search"), function (data) {
         var template = $($("#search-result-template").html());
 
         template.find(".movie-title").text(result.Title);
-        template.find(".poster").attr("src", result.Poster);
+        template.find(".result-year").text(result.Year);
+        template.find(".btn").attr("href", "movie.html?id=" + result.imdbID);
+
+        if(result.Type == "series"){
+            template.find(".result-info").append("(TV Series)");
+        }
+
+        if(result.Poster == "N/A" || result.Poster == ""){
+            template.find(".poster").attr("src", "https://www.tu-chemnitz.de/physik/TPSM/bilder/noimageavailable.png");
+        }
+        else {
+            template.find(".poster").attr("src", result.Poster);
+        }
         
         $("#search-results").append(template);
     }
