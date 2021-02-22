@@ -25,3 +25,13 @@ body {
 .portfolio-item .card-img-top {
   max-height: 500px;
 }
+
+.search-poster {
+  height: 200px;
+  min-width: 128px;
+}
+
+.poster-col {
+  /* -ms-flex: 0 0 230px; */
+  flex: 0 0 170px;
+} 
