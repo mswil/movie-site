@@ -32,6 +32,9 @@ body {
 }
 
 .poster-col {
-  /* -ms-flex: 0 0 230px; */
   flex: 0 0 170px;
 } 
+
+.toast {
+  z-index: 2;
+}
