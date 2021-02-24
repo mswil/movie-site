@@ -4,6 +4,9 @@
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
  */
 body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   padding-top: 56px;
 }
 
@@ -37,4 +40,9 @@ body {
 
 .toast {
   z-index: 2;
+}
+
+/* flex MAGIC */
+.container {
+  flex: 1 0 auto;
 }
