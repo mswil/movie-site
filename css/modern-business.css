@@ -46,3 +46,7 @@ body {
 .container {
   flex: 1 0 auto;
 }
+
+.profile-col {
+  flex: 0 0 250px;
+} 
