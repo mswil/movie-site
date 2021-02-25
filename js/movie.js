@@ -11,9 +11,9 @@ getMovieById(urlParams.get("id"), function(data){
     $("#subtext").text(data.Rated + " | " + data.Runtime + " | " + data.Genre + " | " + data.Released + " | " + data.Country);
     
     $("#short-plot").text(data.Plot);
-    $("#director").find("a").text(data.Director);
-    $("#writers").find("a").text(data.Writer);
-    $("#actors").find("a").text(data.Actors);
+    $("#director").append(data.Director);
+    $("#writers").append(data.Writer);
+    $("#actors").append(data.Actors);
     $("#awards").text(data.Awards);
     $("#country").append(data.Country);
     $("#language").append(data.Language);
