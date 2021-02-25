@@ -57,3 +57,8 @@ body {
   width: 268px;
   object-fit: contain;
 }
+
+.popcorn-icon {
+  object-fit: contain;
+  height: 30px;
+}
