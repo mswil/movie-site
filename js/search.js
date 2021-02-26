@@ -2,22 +2,31 @@ import { search, getMovieById, getMovieByIdFullPlot } from "./api.js";
 
 var urlParams = new URLSearchParams(window.location.search);
 var allSearchResults;
+var allYears = new Set();
+var allSelectedYears = [];
 
 search(urlParams.get("search"), function (data) {
 
     if (data.Response == "False") {
-        $("h1").text("No results matching \"" + urlParams.get("search") + "\" found")
+        $("h1").parent().attr("class", "w-100 text-center");
+        $("h1").text("No results matching \"" + urlParams.get("search") + "\" found");
+        $(".sort-btn").hide();
+        $(".filter-btn").hide();
     }
 
     else {
         $("#search").text("\"" + urlParams.get("search") + "\"");
         allSearchResults = data.Search;
         displaySearchResults(data.Search);
+
+        var filteredYears = sortFilterYear(allYears);
+        displayAllFilterOptions(filteredYears);
     }
 });
 
 function displaySearchResults(searchResults) {
     $("#search-results").empty();
+    allYears.length = 0;
 
     $("#result-count").text(searchResults.length)
 
@@ -39,6 +48,11 @@ function displaySearchResults(searchResults) {
         else {
             template.find(".search-poster").attr("src", result.Poster);
         }
+
+        var filterYears = result.Year.split("–")[0];
+        allYears.add(filterYears);
+
+        template.attr("data-year", filterYears);
 
         $("#search-results").append(template);
     }
@@ -64,22 +78,71 @@ function sortSearchResults(searchResults, sortType) {
     });
 }
 
+function sortFilterYear(years) {
+    var yearsArray = Array.from(years);
+    return yearsArray.sort(function (year1, year2) {
+        return year2.localeCompare(year1);
+    });
+}
+
+function displayAllFilterOptions(years){
+    
+    for(let year of years){
+        var filterTemplate = $($("#filter-checkbox-template").html());
+
+        filterTemplate.find(".form-check-label").text(year);
+
+        filterTemplate.on("change" , function(event){
+            var yearSelected = $(event.target).attr("data-year"); //"2019"
+
+            if(event.target.checked == true){
+                allSelectedYears.push(yearSelected); //["2019"]
+            }
+            else {
+                allSelectedYears.splice(allSelectedYears.indexOf(yearSelected), 1);
+            }
+
+            filterSearchResults(allSelectedYears);
+
+        });
+
+        filterTemplate.find("input").attr("data-year", year);
+        $("#filter-menu").append(filterTemplate);
+    }
+
+}
+
+function filterSearchResults(selectedYears) {
+        $("#search-results .row, #search-results hr").show();
+        $("#search-results .row, #search-results hr").each(function() {
+            if(selectedYears.length > 0 && !selectedYears.includes($(this).attr("data-year"))) {
+                $(this).hide();
+            }
+        });
+}
+
+// Sorting buttons
 $("#title-a-z").on("click", function (event) {
     var sortedResults = sortSearchResults(allSearchResults, "title-a-z")
     displaySearchResults(sortedResults);
+    filterSearchResults(allSelectedYears);
 });
 
 $("#title-z-a").on("click", function (event) {
     var sortedResults = sortSearchResults(allSearchResults, "title-z-a")
     displaySearchResults(sortedResults);
+    filterSearchResults(allSelectedYears);
 });
 
 $("#year-asc").on("click", function (event) {
     var sortedResults = sortSearchResults(allSearchResults, "year-asc")
     displaySearchResults(sortedResults);
+    filterSearchResults(allSelectedYears);
 });
 
 $("#year-des").on("click", function (event) {
     var sortedResults = sortSearchResults(allSearchResults, "year-des")
     displaySearchResults(sortedResults);
+    filterSearchResults(allSelectedYears);
 });
+

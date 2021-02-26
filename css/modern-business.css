@@ -27,7 +27,7 @@ body {
 }
 
 .portfolio-item .card-img-top {
-  max-height: 427px;
+  max-height: 397px;
 }
 
 .search-poster {
@@ -87,4 +87,11 @@ body {
   .carousel-caption h3 {
     font-size: 1.25rem;
   }
+}
+
+.filter-btn .dropdown-menu {
+  min-width: 0;
+  padding: 5px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
