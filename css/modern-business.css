@@ -68,7 +68,7 @@ body {
 }
 
 .carousel-control-prev:hover , .carousel-control-next:hover, .carousel-caption {
-  background-color: rgba(52, 58, 64, .75);
+  background-color: rgba(52, 58, 64, .6);
   transition: background-color 300ms ease-in;
 }
 
